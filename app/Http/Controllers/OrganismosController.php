@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OrganismosController extends Controller{
-    
+    private string $cadenaBuscada;
     public function __construct(){
         $this->middleware('auth');
         $this->cadenaBuscada = "organismos";

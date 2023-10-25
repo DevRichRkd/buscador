@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class EpocasController extends Controller{
-    
+    private string $cadenaBuscada;
     public function __construct(){
         $this->middleware('auth');
         $this->cadenaBuscada = "epocas";
@@ -77,11 +77,6 @@ class EpocasController extends Controller{
         $estatus = NULL;
         $mensaje = NULL;
 
-         /*Guardamos Imagen*/
-        /*$file = $request->file('imagenUno');
-        $imagenUno = time().str_replace(" ","-",$_FILES["imagenUno"]["name"]);
-        Storage::disk("imagenes")->put($imagenUno, file_get_contents($file->getRealPath()));
-        */
         $estatus = ($request['estatus']) ? '1' : '0';
         $epocas = new Epocas;
         $epocas->nombre      = $request['nombre'];

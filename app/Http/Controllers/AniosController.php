@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AniosController extends Controller{
-    
+    private string $cadenaBuscada;
     public function __construct(){
         $this->middleware('auth');
         $this->cadenaBuscada = "años";
@@ -77,11 +77,6 @@ class AniosController extends Controller{
         $estatus = NULL;
         $mensaje = NULL;
 
-         /*Guardamos Imagen*/
-        /*$file = $request->file('imagenUno');
-        $imagenUno = time().str_replace(" ","-",$_FILES["imagenUno"]["name"]);
-        Storage::disk("imagenes")->put($imagenUno, file_get_contents($file->getRealPath()));
-        */
         $estatus = ($request['estatus']) ? '1' : '0';
         $anios = new Anios;
         $anios->nombre      = $request['nombre'];
