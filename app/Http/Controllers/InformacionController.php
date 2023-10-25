@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class InformacionController extends Controller{
-    
+    private string $cadenaBuscada;
     public function __construct(){
         $this->middleware('auth');
         $this->cadenaBuscada = "informacion";
@@ -25,13 +25,6 @@ class InformacionController extends Controller{
         # Fin de validación usuario activo
 
         $perm[] = $this->permisos($this->cadenaBuscada,Auth::user()->id);
-
-        /*$consultas =  DB::connection('mysql')->select("SELECT 
-                                                        consultas.*,
-                                                        niveles.nombre as sector 
-                                                        FROM 
-                                                            consultas
-                                                        LEFT JOIN niveles ON niveles.id = consultas.sector_id ");*/
 
         $informacion =  DB::table('informacion')
                     ->select(
