@@ -248,7 +248,7 @@ class InformacionController extends Controller{
                                                 ]);
     }
 
-    public function update(Request $request, Informacion $info){
+    public function update(Request $request, Informacion $informacion){
         
         # Validamos que el usuario logueado este activo. En caso el usuario no este activo se manda al home
         if (!Auth::guest()){
@@ -289,26 +289,26 @@ class InformacionController extends Controller{
         ]);
 
         $estatus = ($request['estatus']) ? '1' : '0';
-        $info->id_expediente = $request['expediente'];
-        $info->id_anio = $request['anio'];
-        $info->id_entidad = $request['entidad'];
-        $info->id_organismo = $request['organismo'];
-        $info->id_materia = $request['materia'];
-        $info->id_criterio = $request['criterio'];
-        $info->id_epoca = $request['epoca'];
-        $info->id_criterio_seccion = $request['criterio_seccion'];
-        $info->rubro = $request['rubro'];
-        $info->palabras_clave = $request['palabras'];
-        $info->clave_de_control = $request['clave'];
-        $info->vinculo = $request['vinculo'];
-        $info->presedentes = $request['presedentes'];
-        $info->solicitud = $request['solicitud'];
-        $info->respuesta = $request['respuesta'];
-        $info->agravio = $request['agravio'];
-        $info->relevancia = $request['relevancia'];
-        $info->estatus     = $estatus;
+        $informacion->id_expediente = $request['expediente'];
+        $informacion->id_anio = $request['anio'];
+        $informacion->id_entidad = $request['entidad'];
+        $informacion->id_organismo = $request['organismo'];
+        $informacion->id_materia = $request['materia'];
+        $informacion->id_criterio = $request['criterio'];
+        $informacion->id_epoca = $request['epoca'];
+        $informacion->id_criterio_seccion = $request['criterio_seccion'];
+        $informacion->rubro = $request['rubro'];
+        $informacion->palabras_clave = $request['palabras'];
+        $informacion->clave_de_control = $request['clave'];
+        $informacion->vinculo = $request['vinculo'];
+        $informacion->presedentes = $request['presedentes'];
+        $informacion->solicitud = $request['solicitud'];
+        $informacion->respuesta = $request['respuesta'];
+        $informacion->agravio = $request['agravio'];
+        $informacion->relevancia = $request['relevancia'];
+        $informacion->estatus     = $estatus;
 
-        if ($info->save()) {
+        if ($informacion->save()) {
         
             return redirect('/informacion')->with([
                 'titulo'  => Lang::get('messages.mensajeTransaccion.exito'),

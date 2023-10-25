@@ -30,7 +30,7 @@
                                         <th>{{__('Entidad federativa')}}</th>
                                         <th>{{__('Organismo garante')}}</th>
                                         <th>{{__('Materia')}}</th>
-                                        <th>{{__('Vínculo electrónico para descarga del documento')}}</th>
+                                        <th>{{__('Vínculo electrónico')}}</th>
                                         <th>{{__('Precedentes')}}</th>
                                         <th>{{__('Tipo de criterio')}}</th>
                                         <th>{{__('Epoca del criterio')}}</th>
