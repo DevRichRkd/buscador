@@ -279,7 +279,7 @@ class InformacionController extends Controller{
             'criterio_seccion'   => 'required|not_in:0',
             'rubro'   => 'required',
             'palabras'   => 'required',
-            'clave'   => 'required|unique:informacion, clave_de_control,'.$info->id,
+            'clave'   => 'required',
             'vinculo'   => 'required',
             'presedentes'   => 'required',
             'solicitud'   => 'required',
