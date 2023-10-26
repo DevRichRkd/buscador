@@ -21,7 +21,7 @@
         <div class="logobar" style="background-color: #b7b7b7">
             <a href="{{ url('/') }}" class="logo logo-large">
                 <img src="{{asset('assets/images/logo.png')}}" class="img-fluid" alt="logo"-->
-                <h1 class="text-white font-weight-bold">Repositorio</h1>
+                <h1 class="text-white font-weight-bold">Buscadores</h1>
             </a>
             <a href="index.html" class="logo logo-small">
                 <img src="{{asset('assets/images/logo.png')}}" class="img-fluid" alt="logo"-->
