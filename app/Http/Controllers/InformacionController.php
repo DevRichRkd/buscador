@@ -240,26 +240,6 @@ class InformacionController extends Controller{
             ]);
         }
 
-        $this->validate($request, [
-            'expediente'   => 'required|not_in:0',
-            'anio'   => 'required|not_in:0',
-            'entidad'   => 'required|not_in:0',
-            'organismo'   => 'required|not_in:0',
-            'materia'   => 'required|not_in:0',
-            'criterio'   => 'required|not_in:0',
-            'epoca'   => 'required|not_in:0',
-            'criterio_seccion'   => 'required|not_in:0',
-            'rubro'   => 'required',
-            'palabras'   => 'required',
-            'clave'   => 'required',
-            'vinculo'   => 'required',
-            'presedentes'   => 'required',
-            'solicitud'   => 'required',
-            'respuesta'   => 'required',
-            'agravio'   => 'required',
-            'relevancia'   => 'required',
-        ]);
-
         $estatus = ($request['estatus']) ? '1' : '0';
         $informacion->id_expediente = $request['expediente'];
         $informacion->id_anio = $request['anio'];

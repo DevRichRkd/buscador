@@ -217,10 +217,10 @@
                             </div>
                         </div>
                         <!--Aqui terminan los campos para CRITERIOS-->
+                        <!--Desde aqui empiezan los campos para RESOLUCIONES-->
                         <div class="card hide" id="card_resoluciones">
                             <div class="card-body">
                                 <h5 class="card-title">Campos exclusivos para las resoluciones relevantes</h5>
-                                <!--Desde aqui empiezan los campos para RESOLUCIONES-->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group row">
