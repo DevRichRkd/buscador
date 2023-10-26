@@ -32830,11 +32830,11 @@ input[type=range]:focus {
   cursor: default;
 }
 .br-theme-bars-square .br-readonly a.br-active {
-  border: 2px solid #primary;
+  border: 2px solid primary;
   color: #0080ff;
 }
 .br-theme-bars-square .br-readonly a.br-selected {
-  border: 2px solid #primary;
+  border: 2px solid primary;
   color: #0080ff;
 }
 
@@ -34813,6 +34813,21 @@ table.focus-on tfoot tr.focused td {
   .infobar-settings-sidebar.sidebarshow {
     width: 100%;
   }
+}
+
+.hide{
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+label.error {
+  color: red;
+  font-size: 0.7rem;
+  display: block;
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

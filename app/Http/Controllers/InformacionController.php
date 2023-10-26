@@ -38,49 +38,48 @@ class InformacionController extends Controller{
                             'epocas.nombre as epoca',
                             'criterios_secciones.nombre as criterio_seccion'
                         )
-                    ->Join(
+                    ->leftJoin(
                         "expedientes",
                         'informacion.id_expediente',
                         '=',
                         'expedientes.id')
-                    ->Join(
+                    ->leftJoin(
                         "anios",
                         'informacion.id_anio',
                         '=',
                         'anios.id')
-                    ->Join(
+                    ->leftJoin(
                         "entidades",
                         'informacion.id_entidad',
                         '=',
                         'entidades.id')
-                    ->Join(
+                    ->leftJoin(
                         "organismos",
                         'informacion.id_organismo',
                         '=',
                         'organismos.id')
-                    ->Join(
+                    ->leftJoin(
                         "materias",
                         'informacion.id_materia',
                         '=',
                         'materias.id')
-                    ->Join(
+                    ->leftJoin(
                         "criterios",
                         'informacion.id_criterio',
                         '=',
                         'criterios.id')
-                    ->Join(
+                    ->leftJoin(
                         "epocas",
                         'informacion.id_epoca',
                         '=',
                         'epocas.id')
-                    ->Join(
+                    ->leftJoin(
                         "criterios_secciones",
                         'informacion.id_criterio_seccion',
                         '=',
                         'criterios_secciones.id')
                     ->orderBy('informacion.id', 'Desc')
                     ->paginate(25);
-                    //$informacion = 'sisisisi';
         return view('informacion/listar')->with([
                                                 'informacion' => $informacion,
                                                 'perm'     => $perm[0],
@@ -140,27 +139,7 @@ class InformacionController extends Controller{
                 'msj'   => Lang::get('messages.errorPermisos')
             ]);
         }
-        
-        $this->validate($request, [
-            'expediente'   => 'required|not_in:0',
-            'anio'   => 'required|not_in:0',
-            'entidad'   => 'required|not_in:0',
-            'organismo'   => 'required|not_in:0',
-            'materia'   => 'required|not_in:0',
-            'criterio'   => 'required|not_in:0',
-            'epoca'   => 'required|not_in:0',
-            'criterio_seccion'   => 'required|not_in:0',
-            'rubro'   => 'required',
-            'palabras'   => 'required',
-            'clave'   => 'required|unique:informacion',
-            'vinculo'   => 'required',
-            'presedentes'   => 'required',
-            'solicitud'   => 'required',
-            'respuesta'   => 'required',
-            'agravio'   => 'required',
-            'relevancia'   => 'required',
-        ]);
-        
+
         $estatus = NULL;
         $mensaje = NULL;
 
