@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Lang;
 use Auth;
-use Storage;
 use App\Organismos;
-use App\Entidades;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -229,5 +227,20 @@ class OrganismosController extends Controller{
                 'msj'   => Lang::get('messages.mensajeTransaccion.msjSuccess'),
             ]);
         }
+    }
+
+    public function getOrganismosByIdEntidad($id)
+    {
+        # Validamos que el usuario logueado este activo. En caso el usuario no este activo se manda al home
+        if (!Auth::guest()){
+            if(Auth::user()->estatus != 1){
+                return redirect('/home');
+            }
+        }
+        # Fin de validación usuario activo
+        $organismo = Organismos::where('id_entidad','=',$id)->get();
+       
+        return $organismo;
+
     }
 }

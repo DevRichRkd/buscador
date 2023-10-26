@@ -120,9 +120,6 @@
                                     <div class="col-sm-9">
                                         <select name="organismo" id="organismo" class="form-control">
                                             <option value="0">-- Seleccione --</option>
-                                            @foreach($organismos as $organismo => $valor)
-                                            <option value="{{$valor->id}}">{{$valor->nombre}}</option>
-                                            @endforeach
                                         </select>
                                         
                                         @include('layouts.partials.errorCampos',['campo' => 'organismo'])
@@ -334,15 +331,17 @@
 
 @section('script-custom')
 <script>
-$('#nombre, #descripcion').maxlength({
-    alwaysShow: true,
-    threshold: 10,
-    warningClass: "badge mt-1 badge-success",
-    limitReachedClass: "badge mt-1 badge-danger",
-    separator: ' {{__('de')}} ',
-    preText: '{{__('teQueda')}} ',
-    postText: ' {{__('caracteres')}}.',
-    validate: true
+    $(document).ready(function(){
+        $("#entidad").change(function(){
+            var categoria = $(this).val();
+            $.get('/organismosByentidad/'+categoria, function(data){
+                console.log(data);
+                $('#organismo').empty();
+                    for(i = 0; i < data.length; i++){
+                        $('#organismo').append('<option value="'+ data[i].id +'">'+ data[i].nombre +'</option>');
+                    }
+            });
+        });
   });
 </script>
 @endsection

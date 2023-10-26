@@ -75,4 +75,6 @@ Route::resource('/secciones','SeccionesController');
 Route::resource('/organismos','OrganismosController');
 Route::resource('/informacion','InformacionController');
 
+Route::get('/organismosByentidad/{id}','OrganismosController@getOrganismosByIdEntidad');
+
 
