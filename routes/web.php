@@ -77,4 +77,7 @@ Route::resource('/informacion','InformacionController');
 
 Route::get('/organismosByentidad/{id}','OrganismosController@getOrganismosByIdEntidad');
 
+Route::resource('/loadcsv', 'PagesController');
+Route::post('/uploadFile', 'PagesController@uploadFile');
+
 
