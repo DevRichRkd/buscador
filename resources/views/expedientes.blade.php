@@ -85,8 +85,14 @@
                             @endif
                         </div>
                     @endif
-
                     <!--Aqui se colocara el campo de clave de control-->
+                    <div class="p-3">
+                        <p class=" h6 bold">Clave de control</p>
+                        <input type="text" id="clave_de_control" name="clave_de_control" class="w-100">
+                        <input type="hidden" value="{{$idExpediente}}" id="idExpediente">
+                        <select id="display" class="form-select w-100" multiple style="display:none">
+                        </select>
+                    </div> 
                     <!--Aqui se colocara el campo de clave de control-->
                     @if($idExpediente == 1)
                         <div class="p-3">
@@ -174,6 +180,34 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="{{ asset('hotspot')}}/jquery.hotspot.js"></script>
+    <script>
+        $(document).ready(function() {
+            var idExpediente = $('#idExpediente').val();
+            $("#clave_de_control").keyup(function() {
+                var clave = $('#clave_de_control').val();
+                if(clave == ''){
+                    $('#display').hide();
+                }else{
+                    $.get('/expedientesByClave/'+clave+'/'+idExpediente, function(data){
+                            $('#display').empty();
+                            if(data.length > 0){
+                                $('#display').show();
+                            }else{
+                                $('#display').hide();
+                            }
+                                for(i = 0; i < data.length; i++){
+                                    $('#display').append('<option value="'+ data[i].id +'">'+ data[i].clave_de_control +'</option>');
+                                }
+                        });
+                }
+            });
+
+            $(".form-select").change(function(){
+                var idInformacion = $(this).val();
+                window.location.href = '/expediente/'+idExpediente+'/'+idInformacion;
+            });
+        });
+    </script>
 
 
 </body>

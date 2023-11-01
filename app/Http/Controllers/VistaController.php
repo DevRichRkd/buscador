@@ -234,6 +234,74 @@ class Vistacontroller extends Controller{
         ]);
     }
 
+    public function getExpedientesByClave($clave, $id)
+    {
+        # Validamos que el usuario logueado este activo. En caso el usuario no este activo se manda al home
+        if (!Auth::guest()){
+            if(Auth::user()->estatus != 1){
+                return redirect('/home');
+            }
+        }
+        # Fin de validación usuario activo
+        $expedientes = Informacion::where('clave_de_control','like','%' .$clave.'%')
+        ->when($id, function ($query, $id){
+            return $query->where('id_expediente', $id);
+        })
+        ->get();
+       
+        return $expedientes;
+
+    }
+
+    public function getExpedienteById($id, $idInfo){
+
+        $expedientes = Informacion::where('id_expediente',$id)
+        ->when($idInfo, function ($query, $idInfo){
+            return $query->where('id', $idInfo);
+        })
+        ->get();
+        
+        $idEntidad = 0;
+        $idAnio  = 0;
+        $idTipo  = 0;
+        $idEpoca  =  0;
+        $idMateria  =  0;
+        $idSeccion  =  0;
+
+        $sqlEntidades = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM entidades AS e, informacion AS i WHERE e.id = i.id_entidad AND i.id_expediente = $id AND i.id = $idInfo GROUP BY id";
+        $totalEntidades = DB::select($sqlEntidades);
+
+        $sqlAnios = "SELECT a.id, a.nombre, COUNT(a.id) AS total FROM anios AS a, informacion AS i WHERE a.id = i.id_anio AND i.id_expediente = $id AND i.id = $idInfo GROUP BY id";
+        $totalAnios = DB::select($sqlAnios);
+
+        $sqlCriterios = "SELECT c.id, c.nombre, COUNT(c.id) AS total FROM criterios AS c, informacion AS i WHERE c.id = i.id_criterio AND i.id_expediente = $id AND i.id = $idInfo GROUP BY id";
+        $totalCriterios = DB::select($sqlCriterios);
+
+        $sqlEpocas = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM epocas AS e, informacion AS i WHERE e.id = i.id_epoca AND i.id_expediente = $id AND i.id = $idInfo GROUP BY id";
+        $totalEpocas = DB::select($sqlEpocas);
+
+        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_materia AND i.id_expediente = $id AND i.id = $idInfo GROUP BY id";
+        $totalMaterias = DB::select($sqlMaterias);
+
+        return view('expedientes')->with([
+                                        'expedientes' => $expedientes,
+                                        'totalEntidades'=> $totalEntidades,
+                                        'totalAnios'=> $totalAnios,
+                                        'totalCriterios'=> $totalCriterios,
+                                        'totalEpocas'=> $totalEpocas,
+                                        'totalMaterias'=> $totalMaterias,
+
+                                        'idExpediente'=> $id,
+                                        'idEntidad'=> $idEntidad,
+                                        'idAnio'=> $idAnio,
+                                        'idTipo'=> $idTipo,
+                                        'idEpoca'=> $idEpoca,
+                                        'idMateria'=> $idMateria,
+                                        'idSeccion'=> $idSeccion,
+                                    ]);
+    }
+
+
     public function busqueda(){
 
         $niveles = Nivel::where('estatus','1')->get();
