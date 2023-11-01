@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Informacion;
 use Lang;
 use Auth;
 use App\Nivel;
@@ -33,6 +34,183 @@ class Vistacontroller extends Controller{
                                         'actual' => $diaActual,                                         
                                         'ajustes' => $ajustes,                                         
                                     ]);
+    }
+
+    public function getTipoExpedienteById($id){
+
+        $expedientes = Informacion::where('id_expediente',$id)->get();
+
+        $idEntidad = 0;
+        $idAnio  = 0;
+        $idTipo  = 0;
+        $idEpoca  =  0;
+        $idMateria  =  0;
+
+        $sqlEntidades = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM entidades AS e, informacion AS i WHERE e.id = i.id_entidad AND i.id_expediente = $id GROUP BY id";
+        $totalEntidades = DB::select($sqlEntidades);
+
+        $sqlAnios = "SELECT a.id, a.nombre, COUNT(a.id) AS total FROM anios AS a, informacion AS i WHERE a.id = i.id_anio AND i.id_expediente = $id GROUP BY id";
+        $totalAnios = DB::select($sqlAnios);
+
+        $sqlCriterios = "SELECT c.id, c.nombre, COUNT(c.id) AS total FROM criterios AS c, informacion AS i WHERE c.id = i.id_criterio AND i.id_expediente = $id GROUP BY id";
+        $totalCriterios = DB::select($sqlCriterios);
+
+        $sqlEpocas = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM epocas AS e, informacion AS i WHERE e.id = i.id_epoca AND i.id_expediente = $id GROUP BY id";
+        $totalEpocas = DB::select($sqlEpocas);
+
+        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_epoca AND i.id_expediente = $id GROUP BY id";
+        $totalMaterias = DB::select($sqlMaterias);
+
+        return view('expedientes')->with([
+                                        'expedientes' => $expedientes,
+                                        'totalEntidades'=> $totalEntidades,
+                                        'totalAnios'=> $totalAnios,
+                                        'totalCriterios'=> $totalCriterios,
+                                        'totalEpocas'=> $totalEpocas,
+                                        'totalMaterias'=> $totalMaterias,
+
+                                        'idExpediente'=> $id,
+                                        'idEntidad'=> $idEntidad,
+                                        'idAnio'=> $idAnio,
+                                        'idTipo'=> $idTipo,
+                                        'idEpoca'=> $idEpoca,
+                                        'idMateria'=> $idMateria,
+                                    ]);
+    }
+
+    public function filters($expediente = 0, $entidad = 0, $anio = 0, $tipo = 0, $epoca = 0, $materia = 0){
+
+        $expedientes = Informacion::where('id_expediente',$expediente)
+        ->when($entidad, function ($query, $entidad){
+            return $query->where('id_entidad', $entidad);
+        })
+        ->when($anio, function ($query, $anio){
+            return $query->where('id_anio', $anio);
+        })
+        ->when($tipo, function ($query, $tipo){
+            return $query->where('id_criterio', $tipo);
+        })
+        ->when($epoca, function ($query, $epoca){
+            return $query->where('id_epoca', $epoca);
+        })
+        ->when($materia, function ($query, $materia){
+            return $query->where('id_materia', $materia);
+        })
+        ->get();
+
+        
+
+        $sqlEntidades = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM entidades AS e, informacion AS i WHERE e.id = i.id_entidad AND i.id_expediente = $expediente";
+        if ($entidad > 0){
+            $sqlEntidades .= " AND i.id_entidad = $entidad";
+        }
+        if ($anio > 0){
+            $sqlEntidades .= " AND i.id_anio = $anio";
+        }
+        if ($tipo > 0){
+            $sqlEntidades .= " AND i.id_criterio = $tipo";
+        }
+        if ($epoca > 0){
+            $sqlEntidades .= " AND i.id_epoca = $epoca";
+        }
+        if ($materia > 0){
+            $sqlEntidades .= " AND i.id_materia = $materia";
+        }
+        $sqlEntidades .= " GROUP BY id";
+        $totalEntidades = DB::select($sqlEntidades);
+
+        $sqlAnios = "SELECT a.id, a.nombre, COUNT(a.id) AS total FROM anios AS a, informacion AS i WHERE a.id = i.id_anio AND i.id_expediente = $expediente";
+        if ($entidad > 0){
+            $sqlAnios .= " AND i.id_entidad = $entidad";
+        }
+        if ($anio > 0){
+            $sqlAnios .= " AND i.id_anio = $anio";
+        }
+        if ($tipo > 0){
+            $sqlAnios .= " AND i.id_criterio = $tipo";
+        }
+        if ($epoca > 0){
+            $sqlAnios .= " AND i.id_epoca = $epoca";
+        }
+        if ($materia > 0){
+            $sqlAnios .= " AND i.id_materia = $materia";
+        }
+        $sqlAnios .= " GROUP BY id";
+        $totalAnios = DB::select($sqlAnios);
+
+        $sqlCriterios = "SELECT c.id, c.nombre, COUNT(c.id) AS total FROM criterios AS c, informacion AS i WHERE c.id = i.id_criterio AND i.id_expediente = $expediente";
+        if ($entidad > 0){
+            $sqlCriterios .= " AND i.id_entidad = $entidad";
+        }
+        if ($anio > 0){
+            $sqlCriterios .= " AND i.id_anio = $anio";
+        }
+        if ($tipo > 0){
+            $sqlCriterios .= " AND i.id_criterio = $tipo";
+        }
+        if ($epoca > 0){
+            $sqlCriterios .= " AND i.id_epoca = $epoca";
+        }
+        if ($materia > 0){
+            $sqlCriterios .= " AND i.id_materia = $materia";
+        }
+        $sqlCriterios .= " GROUP BY id";
+        $totalCriterios = DB::select($sqlCriterios);
+
+        $sqlEpocas = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM epocas AS e, informacion AS i WHERE e.id = i.id_epoca AND i.id_expediente = $expediente";
+        if ($entidad > 0){
+            $sqlEpocas .= " AND i.id_entidad = $entidad";
+        }
+        if ($anio > 0){
+            $sqlEpocas .= " AND i.id_anio = $anio";
+        }
+        if ($tipo > 0){
+            $sqlEpocas .= " AND i.id_criterio = $tipo";
+        }
+        if ($epoca > 0){
+            $sqlEpocas .= " AND i.id_epoca = $epoca";
+        }
+        if ($materia > 0){
+            $sqlEpocas .= " AND i.id_materia = $materia";
+        }
+        $sqlEpocas .= " GROUP BY id";
+        $totalEpocas = DB::select($sqlEpocas);
+
+        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_epoca AND i.id_expediente = $expediente";
+        if ($entidad > 0){
+            $sqlMaterias .= " AND i.id_entidad = $entidad";
+        }
+        if ($anio > 0){
+            $sqlMaterias .= " AND i.id_anio = $anio";
+        }
+        if ($tipo > 0){
+            $sqlMaterias .= " AND i.id_criterio = $tipo";
+        }
+        if ($epoca > 0){
+            $sqlMaterias .= " AND i.id_epoca = $epoca";
+        }
+        if ($materia > 0){
+            $sqlMaterias .= " AND i.id_materia = $materia";
+        }
+        $sqlMaterias .= " GROUP BY id";
+        $totalMaterias = DB::select($sqlMaterias);
+
+        return view('result')->with([
+                                    'expedientes' => $expedientes,
+                                    'totalEntidades'=> $totalEntidades,
+                                    'totalAnios'=> $totalAnios,
+                                    'totalCriterios'=> $totalCriterios,
+                                    'totalEpocas'=> $totalEpocas,
+                                    'totalMaterias'=> $totalMaterias,
+
+                                    'idExpediente'=> $expediente,
+                                    'idEntidad'=> $entidad,
+                                    'idAnio'=> $anio,
+                                    'idTipo'=> $tipo,
+                                    'idEpoca'=> $epoca,
+                                    'idMateria'=> $materia,
+
+        ]);
     }
 
     public function busqueda(){

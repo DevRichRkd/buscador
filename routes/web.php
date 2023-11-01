@@ -37,6 +37,16 @@ Route::get('/filtros/{buscar}/{nivel}/{ejercicio}/{tema}/{pais}/{pertencia}/{pro
  
 Route::get('/resultados','VistaController@resultados');
 
+
+
+//Muestra todos los Expedientes por ID
+Route::get('/expedientes/{id}','VistaController@getTipoExpedienteById');
+
+Route::get('/filters/{expediente}/{entidad}/{anio}/{tipo}/{epoca}/{materia}','VistaController@filters');
+
+Route::get('/result','VistaController@result');
+
+
 Auth::routes();
 Route::get('/home',function () {
    if(isset(Auth::user()->id)){
