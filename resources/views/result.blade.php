@@ -73,32 +73,33 @@
                             <p>Sin resultados</p>
                         @endif
                     </div>
-
-                    <div class="p-3">
-                        <p class=" h6 bold">Tipo</p>
-                        @if(count($totalCriterios) > 0)
-                            @foreach($totalCriterios as $criterio => $valor)
-                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$valor->id}}/{{$idEpoca}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
-                            @endforeach 
-                        @else
-                            <p>Sin resultados</p>
-                        @endif
-                    </div>
+                    @if($idExpediente == 1)
+                        <div class="p-3">
+                            <p class=" h6 bold">Tipo</p>
+                            @if(count($totalCriterios) > 0)
+                                @foreach($totalCriterios as $criterio => $valor)
+                                <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$valor->id}}/{{$idEpoca}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                                @endforeach 
+                            @else
+                                <p>Sin resultados</p>
+                            @endif
+                        </div>
+                    @endif
 
                     <!--Aqui se colocara el campo de clave de control-->
                     <!--Aqui se colocara el campo de clave de control-->
-
-                    <div class="p-3">
-                        <p class=" h6 bold">Epoca</p>
-                        @if(count($totalEpocas) > 0)
-                            @foreach($totalEpocas as $epoca => $valor)
-                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$valor->id}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
-                            @endforeach 
-                        @else
-                            <p>Sin resultados</p>
-                        @endif
-                    </div>
-
+                    @if($idExpediente == 1)
+                        <div class="p-3">
+                            <p class=" h6 bold">Epoca</p>
+                            @if(count($totalEpocas) > 0)
+                                @foreach($totalEpocas as $epoca => $valor)
+                                <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$valor->id}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                                @endforeach 
+                            @else
+                                <p>Sin resultados</p>
+                            @endif
+                        </div>
+                    @endif
                     <div class="p-3">
                         <p class=" h6 bold">Materia</p>
                         @if(count($totalMaterias) > 0)
@@ -114,9 +115,15 @@
                </div>
                 <div class="col-md-9 pt-5">
                     <div class="col-md-12 d-flex" >
-                        <div class="col-md-4"><a href="{{ url('expedientes/1') }}">Todo</a></div>
-                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/0/0/0/0/0/1">Vigente</a></div>
-                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/0/0/0/0/0/2">Historico</a></div>
+                        <div class="col-md-4"><a href="{{ url('expedientes')}}/{{$idExpediente}}/">Todo</a></div>
+                        @if($idExpediente == 1)
+                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/1">Vigente</a></div>
+                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/2">Historico</a></div>
+                        @endif
+                        @if($idExpediente == 2)
+                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/1/0">Acceso a la informacion</a></div>
+                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/2/0">Proteccion de datos personales</a></div>
+                        @endif
                     </div>
                     <div class="row">
                         @if(count($expedientes) >  0)

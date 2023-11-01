@@ -59,7 +59,7 @@ class Vistacontroller extends Controller{
         $sqlEpocas = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM epocas AS e, informacion AS i WHERE e.id = i.id_epoca AND i.id_expediente = $id GROUP BY id";
         $totalEpocas = DB::select($sqlEpocas);
 
-        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_epoca AND i.id_expediente = $id GROUP BY id";
+        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_materia AND i.id_expediente = $id GROUP BY id";
         $totalMaterias = DB::select($sqlMaterias);
 
         return view('expedientes')->with([
@@ -193,7 +193,7 @@ class Vistacontroller extends Controller{
         $sqlEpocas .= " GROUP BY id";
         $totalEpocas = DB::select($sqlEpocas);
 
-        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_epoca AND i.id_expediente = $expediente";
+        $sqlMaterias = "SELECT m.id, m.nombre, COUNT(m.id) AS total FROM materias AS m, informacion AS i WHERE m.id = i.id_materia AND i.id_expediente = $expediente";
         if ($entidad > 0){
             $sqlMaterias .= " AND i.id_entidad = $entidad";
         }
@@ -215,7 +215,7 @@ class Vistacontroller extends Controller{
         $sqlMaterias .= " GROUP BY id";
         $totalMaterias = DB::select($sqlMaterias);
 
-        return view('result')->with([
+        return view('expedientes')->with([
                                     'expedientes' => $expedientes,
                                     'totalEntidades'=> $totalEntidades,
                                     'totalAnios'=> $totalAnios,
