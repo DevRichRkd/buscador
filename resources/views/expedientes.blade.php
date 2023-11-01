@@ -56,7 +56,7 @@
                         <p class=" h6 bold">Entidades</p>
                         @if(count($totalEntidades) > 0)
                             @foreach($totalEntidades as $entidad => $valor)
-                                <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$valor->id}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                                <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$valor->id}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
                             @endforeach 
                         @else
                             <p>Sin resultados</p>
@@ -67,7 +67,7 @@
                         <p class=" h6 bold">Años</p>
                         @if(count($totalAnios) > 0)
                             @foreach($totalAnios as $anios => $valor)
-                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$valor->id}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$valor->id}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
                             @endforeach 
                         @else
                             <p>Sin resultados</p>
@@ -78,7 +78,7 @@
                         <p class=" h6 bold">Tipo</p>
                         @if(count($totalCriterios) > 0)
                             @foreach($totalCriterios as $criterio => $valor)
-                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$valor->id}}/{{$idEpoca}}/{{$idMateria}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$valor->id}}/{{$idEpoca}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
                             @endforeach 
                         @else
                             <p>Sin resultados</p>
@@ -92,7 +92,7 @@
                         <p class=" h6 bold">Epoca</p>
                         @if(count($totalEpocas) > 0)
                             @foreach($totalEpocas as $epoca => $valor)
-                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$valor->id}}/{{$idMateria}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$valor->id}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
                             @endforeach 
                         @else
                             <p>Sin resultados</p>
@@ -103,7 +103,7 @@
                         <p class=" h6 bold">Materia</p>
                         @if(count($totalMaterias) > 0)
                             @foreach($totalMaterias as $materia => $valor)
-                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$valor->id}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
+                            <p><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$valor->id}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</p></a>
                             @endforeach 
                         @else
                             <p>Sin resultados</p>
@@ -113,6 +113,11 @@
 
                </div>
                 <div class="col-md-9 pt-5">
+                    <div class="col-md-12 d-flex" >
+                        <div class="col-md-4"><a href="{{ url('expedientes/1') }}">Todo</a></div>
+                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/1">Vigente</a></div>
+                        <div class="col-md-4"><a href="{{url('filters')}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/2">Historico</a></div>
+                    </div>
                     <div class="row">
                         @if(count($expedientes) >  0)
                             @foreach($expedientes as $expediente => $valor)

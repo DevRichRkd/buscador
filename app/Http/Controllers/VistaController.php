@@ -45,6 +45,7 @@ class Vistacontroller extends Controller{
         $idTipo  = 0;
         $idEpoca  =  0;
         $idMateria  =  0;
+        $idSeccion  =  0;
 
         $sqlEntidades = "SELECT e.id, e.nombre, COUNT(e.id) AS total FROM entidades AS e, informacion AS i WHERE e.id = i.id_entidad AND i.id_expediente = $id GROUP BY id";
         $totalEntidades = DB::select($sqlEntidades);
@@ -75,10 +76,11 @@ class Vistacontroller extends Controller{
                                         'idTipo'=> $idTipo,
                                         'idEpoca'=> $idEpoca,
                                         'idMateria'=> $idMateria,
+                                        'idSeccion'=> $idSeccion,
                                     ]);
     }
 
-    public function filters($expediente = 0, $entidad = 0, $anio = 0, $tipo = 0, $epoca = 0, $materia = 0){
+    public function filters($expediente = 0, $entidad = 0, $anio = 0, $tipo = 0, $epoca = 0, $materia = 0, $seccion = 0){
 
         $expedientes = Informacion::where('id_expediente',$expediente)
         ->when($entidad, function ($query, $entidad){
@@ -95,6 +97,9 @@ class Vistacontroller extends Controller{
         })
         ->when($materia, function ($query, $materia){
             return $query->where('id_materia', $materia);
+        })
+        ->when($seccion, function ($query, $seccion){
+            return $query->where('id_criterio_seccion', $seccion);
         })
         ->get();
 
@@ -116,6 +121,9 @@ class Vistacontroller extends Controller{
         if ($materia > 0){
             $sqlEntidades .= " AND i.id_materia = $materia";
         }
+        if ($seccion > 0){
+            $sqlEntidades .= " AND i.id_criterio_seccion = $seccion";
+        }
         $sqlEntidades .= " GROUP BY id";
         $totalEntidades = DB::select($sqlEntidades);
 
@@ -134,6 +142,9 @@ class Vistacontroller extends Controller{
         }
         if ($materia > 0){
             $sqlAnios .= " AND i.id_materia = $materia";
+        }
+        if ($seccion > 0){
+            $sqlAnios .= " AND i.id_criterio_seccion = $seccion";
         }
         $sqlAnios .= " GROUP BY id";
         $totalAnios = DB::select($sqlAnios);
@@ -154,6 +165,9 @@ class Vistacontroller extends Controller{
         if ($materia > 0){
             $sqlCriterios .= " AND i.id_materia = $materia";
         }
+        if ($seccion > 0){
+            $sqlCriterios .= " AND i.id_criterio_seccion = $seccion";
+        }
         $sqlCriterios .= " GROUP BY id";
         $totalCriterios = DB::select($sqlCriterios);
 
@@ -172,6 +186,9 @@ class Vistacontroller extends Controller{
         }
         if ($materia > 0){
             $sqlEpocas .= " AND i.id_materia = $materia";
+        }
+        if ($seccion > 0){
+            $sqlEpocas .= " AND i.id_criterio_seccion = $seccion";
         }
         $sqlEpocas .= " GROUP BY id";
         $totalEpocas = DB::select($sqlEpocas);
@@ -192,6 +209,9 @@ class Vistacontroller extends Controller{
         if ($materia > 0){
             $sqlMaterias .= " AND i.id_materia = $materia";
         }
+        if ($seccion > 0){
+            $sqlMaterias .= " AND i.id_criterio_seccion = $seccion";
+        }
         $sqlMaterias .= " GROUP BY id";
         $totalMaterias = DB::select($sqlMaterias);
 
@@ -209,6 +229,7 @@ class Vistacontroller extends Controller{
                                     'idTipo'=> $tipo,
                                     'idEpoca'=> $epoca,
                                     'idMateria'=> $materia,
+                                    'idSeccion'=> $seccion,
 
         ]);
     }

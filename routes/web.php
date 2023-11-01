@@ -42,7 +42,7 @@ Route::get('/resultados','VistaController@resultados');
 //Muestra todos los Expedientes por ID
 Route::get('/expedientes/{id}','VistaController@getTipoExpedienteById');
 
-Route::get('/filters/{expediente}/{entidad}/{anio}/{tipo}/{epoca}/{materia}','VistaController@filters');
+Route::get('/filters/{expediente}/{entidad}/{anio}/{tipo}/{epoca}/{materia}/{seccion}','VistaController@filters');
 
 Route::get('/result','VistaController@result');
 
