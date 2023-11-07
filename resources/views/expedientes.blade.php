@@ -135,34 +135,45 @@
                         @if(count($expedientes) >  0)
                             @foreach($expedientes as $expediente => $valor)
                                 <div class="col-md-12 text-left mt-3">
-                                    <div style="background-color: white; border-radius: 10px;" class="p-3 shadow">
-                                        <span style="color:#0054DB" class="h6 bold">{{$valor->rubro}}</span><br><br>
-                                        <p>{{$valor->clave_de_control}}</p><br>
-                                        <p>Criterio seccion : {{$valor->criterio_seccion}}</p><br>
-                                        <p style="color:#0054DB">{{$valor->palabras_clave}}</p>
-                                        <p>{{$valor->presedentes}} / <a href="{{$valor->vinculo}}" class="float-right p-3"><span style="color:#0054DB" class="text-right pl-5">Descargar</span></a></p>
-                                        <p>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$valor->clave_de_control}}">
-                                            Ver mas
-                                          </button>
-                                        </p>
+                                    <div style="background-color: white; border-radius: 10px;" class="p-3 shadow d-flex">
+                                        <div class="col-md-10">
+                                            <span style="color:#0054DB" class="h6 bold">Rubro : {{$valor->rubro}}</span><br><br>
+                                            <p>Clave de control : {{$valor->clave_de_control}}</p><br>
+                                            <p>Entidad : {{$valor->entidad}}</p><br>
+                                            <p>Oganismo : {{$valor->organismo}}</p><br>
+                                            <p style="color:#0054DB">Palabras clave : {{$valor->palabras_clave}}</p>
+                                            <p>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$valor->clave_de_control}}">
+                                                Ver mas
+                                                </button>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a href="{{$valor->vinculo}}" class="float-right p-3" target="_blank"><span style="color:#0054DB" class="text-right pl-5">Descargar</span></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal fade" id="Modal{{$valor->clave_de_control}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                       <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">{{$valor->rubro}}</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
                                         <div class="modal-body">
-                                            <p>Criterio seccion : {{$valor->criterio_seccion}}</p><br>
+                                            @if($idExpediente == 1)
+                                                <p>Año de emision : {{$valor->anio}}</p><br>
+                                                <p>Epoca : {{$valor->epoca}}</p><br>
+                                                <p>Materia : {{$valor->materia}}</p><br>
+                                                <p>Tipo de criterio : {{$valor->criterio_seccion}}</p><br>
+                                                <p>Resolucion o presedente: {{$valor->presedentes}}</p><br>
+                                            @endif
+                                            @if($idExpediente == 2)
+                                                <p>Año de emision : {{$valor->anio}}</p><br>
+                                                <p>Solicitud : {{$valor->solicitud}}</p><br>
+                                                <p>Respuesta : {{$valor->respuesta}}</p><br>
+                                                <p>Agravio: {{$valor->agravio}}</p><br>
+                                                <p>Relevancia: {{$valor->relevancia}}</p><br>     
+                                            @endif
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                                         </div>
                                       </div>
                                     </div>
