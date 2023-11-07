@@ -138,6 +138,7 @@
                                     <div style="background-color: white; border-radius: 10px;" class="p-3 shadow">
                                         <span style="color:#0054DB" class="h6 bold">{{$valor->rubro}}</span><br><br>
                                         <p>{{$valor->clave_de_control}}</p><br>
+                                        <p>Criterio seccion : {{$valor->criterio_seccion}}</p><br>
                                         <p style="color:#0054DB">{{$valor->palabras_clave}}</p>
                                         <p>{{$valor->presedentes}} / <a href="{{$valor->vinculo}}" class="float-right p-3"><span style="color:#0054DB" class="text-right pl-5">Descargar</span></a></p>
                                     </div>

@@ -38,7 +38,62 @@ class Vistacontroller extends Controller{
 
     public function getTipoExpedienteById($id){
 
-        $expedientes = Informacion::where('id_expediente',$id)->get();
+        //$expedientes = Informacion::where('id_expediente',$id)->get();
+        $expedientes =  DB::table('informacion')
+                    ->select(
+                            'informacion.*',
+                            'expedientes.nombre as expediente',
+                            'anios.nombre as anio',
+                            'entidades.nombre as entidad',
+                            'organismos.nombre as organismo',
+                            'materias.nombre as materia',
+                            'criterios.nombre as criterio',
+                            'epocas.nombre as epoca',
+                            'criterios_secciones.nombre as criterio_seccion'
+                        )
+                    ->leftJoin(
+                        "expedientes",
+                        'informacion.id_expediente',
+                        '=',
+                        'expedientes.id')
+                    ->leftJoin(
+                        "anios",
+                        'informacion.id_anio',
+                        '=',
+                        'anios.id')
+                    ->leftJoin(
+                        "entidades",
+                        'informacion.id_entidad',
+                        '=',
+                        'entidades.id')
+                    ->leftJoin(
+                        "organismos",
+                        'informacion.id_organismo',
+                        '=',
+                        'organismos.id')
+                    ->leftJoin(
+                        "materias",
+                        'informacion.id_materia',
+                        '=',
+                        'materias.id')
+                    ->leftJoin(
+                        "criterios",
+                        'informacion.id_criterio',
+                        '=',
+                        'criterios.id')
+                    ->leftJoin(
+                        "epocas",
+                        'informacion.id_epoca',
+                        '=',
+                        'epocas.id')
+                    ->leftJoin(
+                        "criterios_secciones",
+                        'informacion.id_criterio_seccion',
+                        '=',
+                        'criterios_secciones.id')
+                    ->where('id_expediente',$id)
+                    ->orderBy('informacion.id', 'Desc')
+                    ->paginate(25);
 
         $idEntidad = 0;
         $idAnio  = 0;
@@ -82,26 +137,80 @@ class Vistacontroller extends Controller{
 
     public function filters($expediente = 0, $entidad = 0, $anio = 0, $tipo = 0, $epoca = 0, $materia = 0, $seccion = 0){
 
-        $expedientes = Informacion::where('id_expediente',$expediente)
-        ->when($entidad, function ($query, $entidad){
-            return $query->where('id_entidad', $entidad);
-        })
-        ->when($anio, function ($query, $anio){
-            return $query->where('id_anio', $anio);
-        })
-        ->when($tipo, function ($query, $tipo){
-            return $query->where('id_criterio', $tipo);
-        })
-        ->when($epoca, function ($query, $epoca){
-            return $query->where('id_epoca', $epoca);
-        })
-        ->when($materia, function ($query, $materia){
-            return $query->where('id_materia', $materia);
-        })
-        ->when($seccion, function ($query, $seccion){
-            return $query->where('id_criterio_seccion', $seccion);
-        })
-        ->get();
+        //$expedientes = Informacion::where('id_expediente',$expediente)
+        $expedientes =  DB::table('informacion')
+                    ->select(
+                            'informacion.*',
+                            'expedientes.nombre as expediente',
+                            'anios.nombre as anio',
+                            'entidades.nombre as entidad',
+                            'organismos.nombre as organismo',
+                            'materias.nombre as materia',
+                            'criterios.nombre as criterio',
+                            'epocas.nombre as epoca',
+                            'criterios_secciones.nombre as criterio_seccion'
+                        )
+                    ->leftJoin(
+                        "expedientes",
+                        'informacion.id_expediente',
+                        '=',
+                        'expedientes.id')
+                    ->leftJoin(
+                        "anios",
+                        'informacion.id_anio',
+                        '=',
+                        'anios.id')
+                    ->leftJoin(
+                        "entidades",
+                        'informacion.id_entidad',
+                        '=',
+                        'entidades.id')
+                    ->leftJoin(
+                        "organismos",
+                        'informacion.id_organismo',
+                        '=',
+                        'organismos.id')
+                    ->leftJoin(
+                        "materias",
+                        'informacion.id_materia',
+                        '=',
+                        'materias.id')
+                    ->leftJoin(
+                        "criterios",
+                        'informacion.id_criterio',
+                        '=',
+                        'criterios.id')
+                    ->leftJoin(
+                        "epocas",
+                        'informacion.id_epoca',
+                        '=',
+                        'epocas.id')
+                    ->leftJoin(
+                        "criterios_secciones",
+                        'informacion.id_criterio_seccion',
+                        '=',
+                        'criterios_secciones.id')
+                    ->when($entidad, function ($query, $entidad){
+                        return $query->where('informacion.id_entidad', $entidad);
+                    })
+                    ->when($anio, function ($query, $anio){
+                        return $query->where('informacion.id_anio', $anio);
+                    })
+                    ->when($tipo, function ($query, $tipo){
+                        return $query->where('informacion.id_criterio', $tipo);
+                    })
+                    ->when($epoca, function ($query, $epoca){
+                        return $query->where('informacion.id_epoca', $epoca);
+                    })
+                    ->when($materia, function ($query, $materia){
+                        return $query->where('informacion.id_materia', $materia);
+                    })
+                    ->when($seccion, function ($query, $seccion){
+                        return $query->where('informacion.id_criterio_seccion', $seccion);
+                    })
+                    ->where('informacion.id_expediente',$expediente)
+                                ->orderBy('informacion.id', 'Desc')
+                                ->paginate(25);
 
         
 
@@ -255,11 +364,69 @@ class Vistacontroller extends Controller{
 
     public function getExpedienteById($id, $idInfo){
 
-        $expedientes = Informacion::where('id_expediente',$id)
+       /* $expedientes = Informacion::where('id_expediente',$id)
         ->when($idInfo, function ($query, $idInfo){
             return $query->where('id', $idInfo);
         })
-        ->get();
+        ->get();*/
+        $expedientes =  DB::table('informacion')
+                    ->select(
+                            'informacion.*',
+                            'expedientes.nombre as expediente',
+                            'anios.nombre as anio',
+                            'entidades.nombre as entidad',
+                            'organismos.nombre as organismo',
+                            'materias.nombre as materia',
+                            'criterios.nombre as criterio',
+                            'epocas.nombre as epoca',
+                            'criterios_secciones.nombre as criterio_seccion'
+                        )
+                    ->leftJoin(
+                        "expedientes",
+                        'informacion.id_expediente',
+                        '=',
+                        'expedientes.id')
+                    ->leftJoin(
+                        "anios",
+                        'informacion.id_anio',
+                        '=',
+                        'anios.id')
+                    ->leftJoin(
+                        "entidades",
+                        'informacion.id_entidad',
+                        '=',
+                        'entidades.id')
+                    ->leftJoin(
+                        "organismos",
+                        'informacion.id_organismo',
+                        '=',
+                        'organismos.id')
+                    ->leftJoin(
+                        "materias",
+                        'informacion.id_materia',
+                        '=',
+                        'materias.id')
+                    ->leftJoin(
+                        "criterios",
+                        'informacion.id_criterio',
+                        '=',
+                        'criterios.id')
+                    ->leftJoin(
+                        "epocas",
+                        'informacion.id_epoca',
+                        '=',
+                        'epocas.id')
+                    ->leftJoin(
+                        "criterios_secciones",
+                        'informacion.id_criterio_seccion',
+                        '=',
+                        'criterios_secciones.id')
+                    ->where('id_expediente',$id)
+                    ->when($idInfo, function ($query, $idInfo){
+                        return $query->where('informacion.id', $idInfo);
+                    })
+                    ->orderBy('informacion.id', 'Desc')
+                    ->paginate(25);
         
         $idEntidad = 0;
         $idAnio  = 0;
