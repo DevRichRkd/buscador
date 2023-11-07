@@ -141,8 +141,32 @@
                                         <p>Criterio seccion : {{$valor->criterio_seccion}}</p><br>
                                         <p style="color:#0054DB">{{$valor->palabras_clave}}</p>
                                         <p>{{$valor->presedentes}} / <a href="{{$valor->vinculo}}" class="float-right p-3"><span style="color:#0054DB" class="text-right pl-5">Descargar</span></a></p>
+                                        <p>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$valor->clave_de_control}}">
+                                            Ver mas
+                                          </button>
+                                        </p>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="Modal{{$valor->clave_de_control}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">{{$valor->rubro}}</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Criterio seccion : {{$valor->criterio_seccion}}</p><br>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                             @endforeach
                         @else
                             <div class="col-md-12">
@@ -154,7 +178,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Start js -->        
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
