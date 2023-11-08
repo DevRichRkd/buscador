@@ -93,7 +93,7 @@ class Vistacontroller extends Controller{
                         'criterios_secciones.id')
                     ->where('id_expediente',$id)
                     ->orderBy('informacion.id', 'Desc')
-                    ->paginate(25);
+                    ->paginate(10);
 
         $idEntidad = 0;
         $idAnio  = 0;
@@ -124,7 +124,8 @@ class Vistacontroller extends Controller{
                                         'totalCriterios'=> $totalCriterios,
                                         'totalEpocas'=> $totalEpocas,
                                         'totalMaterias'=> $totalMaterias,
-
+                                        
+                                        'request' => 0,
                                         'idExpediente'=> $id,
                                         'idEntidad'=> $idEntidad,
                                         'idAnio'=> $idAnio,
@@ -135,7 +136,7 @@ class Vistacontroller extends Controller{
                                     ]);
     }
 
-    public function filters($expediente = 0, $entidad = 0, $anio = 0, $tipo = 0, $epoca = 0, $materia = 0, $seccion = 0){
+    public function filters($buscar = 0,$expediente = 0, $entidad = 0, $anio = 0, $tipo = 0, $epoca = 0, $materia = 0, $seccion = 0){
 
         //$expedientes = Informacion::where('id_expediente',$expediente)
         $expedientes =  DB::table('informacion')
@@ -210,7 +211,7 @@ class Vistacontroller extends Controller{
                     })
                     ->where('informacion.id_expediente',$expediente)
                                 ->orderBy('informacion.id', 'Desc')
-                                ->paginate(25);
+                                ->paginate(10);
 
         
 
@@ -331,7 +332,8 @@ class Vistacontroller extends Controller{
                                     'totalCriterios'=> $totalCriterios,
                                     'totalEpocas'=> $totalEpocas,
                                     'totalMaterias'=> $totalMaterias,
-
+                                    
+                                    'request' => $buscar,
                                     'idExpediente'=> $expediente,
                                     'idEntidad'=> $entidad,
                                     'idAnio'=> $anio,
@@ -457,7 +459,8 @@ class Vistacontroller extends Controller{
                                         'totalCriterios'=> $totalCriterios,
                                         'totalEpocas'=> $totalEpocas,
                                         'totalMaterias'=> $totalMaterias,
-
+                                        
+                                        'request' => 0,
                                         'idExpediente'=> $id,
                                         'idEntidad'=> $idEntidad,
                                         'idAnio'=> $idAnio,
