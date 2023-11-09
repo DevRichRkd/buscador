@@ -254,7 +254,7 @@
                                                 {{__('Solicitud')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="solicitud" id="solicitud" value="{{$informacion->solicitud}}">
+                                                <textarea  maxlength="1500" class="form-control" name="solicitud" id="solicitud" rows="3">{{$informacion->solicitud}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -266,7 +266,7 @@
                                                 {{__('Respuesta')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="respuesta" id="respuesta" value="{{$informacion->respuesta}}">
+                                                <textarea maxlength="1500" class="form-control" name="respuesta" id="respuesta" rows="3">{{$informacion->respuesta}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +278,7 @@
                                                 {{__('Agravio')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="agravio" id="agravio" value="{{$informacion->agravio}}">
+                                                <textarea maxlength="1500" class="form-control" name="agravio" id="agravio" rows="3">{{$informacion->agravio}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@
                                                 {{__('Relevancia de la Resolución')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="relevancia" id="relevancia" value="{{$informacion->relevancia}}">
+                                                <textarea  maxlength="1500" class="form-control" name="relevancia" id="relevancia" rows="3">{{$informacion->relevancia}}</textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -31,14 +31,14 @@
                                         <th>{{__('Organismo garante')}}</th>
                                         <th>{{__('Materia')}}</th>
                                         <th>{{__('Vínculo electrónico')}}</th>
-                                        <th>{{__('Precedentes')}}</th>
+                                         <!--<th>{{__('Precedentes')}}</th>
                                         <th>{{__('Tipo de criterio')}}</th>
                                         <th>{{__('Epoca del criterio')}}</th>
                                         <th>{{__('Tipo de criterio')}}</th>
-                                        <th>{{__('Solicitud')}}</th>
+                                       <th>{{__('Solicitud')}}</th>
                                         <th>{{__('Respuesta')}}</th>
                                         <th>{{__('Agravio')}}</th>
-                                        <th>{{__('Relevancia de la Resolución')}}</th>
+                                        <th>{{__('Relevancia de la Resolución')}}</th>-->
                                         <th>{{__('activo')}}</th>
                                         @if($perm['U'])
                                             <th>{{__('editar')}}</th>
@@ -62,14 +62,14 @@
                                             <td>{{$valor->organismo}}</td>
                                             <td>{{$valor->materia}}</td>
                                             <td>{{$valor->vinculo}}</td>
-                                            <td>{{$valor->presedentes}}</td>
+                                            <!--<td>{{$valor->presedentes}}</td>
                                             <td>{{$valor->criterio}}</td>
                                             <td>{{$valor->epoca}}</td>
                                             <td>{{$valor->criterio_seccion}}</td>
                                             <td>{{$valor->solicitud}}</td>
                                             <td>{{$valor->respuesta}}</td>
                                             <td>{{$valor->agravio}}</td>
-                                            <td>{{$valor->relevancia}}</td>
+                                            <td>{{$valor->relevancia}}</td>-->
                                             @include("layouts.partials.estatus",['estatus' => $valor->estatus])
                                                                 
                                             @include("layouts.partials.td-actualizar-eliminar",['id' => $valor->id, 'nombre' => $valor->clave_de_control, 'recurso' => 'informacion'])                                 

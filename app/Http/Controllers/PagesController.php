@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Auth;
 use Session;
 use App\Page;
@@ -10,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller{
-
     private string $cadenaBuscada;
     public function __construct(){
         $this->middleware('auth');
@@ -100,7 +98,7 @@ class PagesController extends Controller{
               if($expediente->count() > 0){
                 $idExpediente = $expediente->first()->id;
               }else{
-                $mnsErr = 'Expediente no encontrado en la base de datos, fila: '. ($key + 1);
+                $mnsErr = 'Expediente '.$importData[0].' no encontrado en la base de datos, fila: '. ($key + 1);
                 $errors[] = $mnsErr;
                 continue;
               }
@@ -129,7 +127,7 @@ class PagesController extends Controller{
               if($anio->count() > 0){
                 $idAnio = $anio->first()->id;
               }else{
-                $errors[] = 'Año no encontrado en la base de datos, fila: '. ($key + 1);
+                $errors[] = 'Año '.$importData[4].' no encontrado en la base de datos, fila: '. ($key + 1);
                 continue;
               }
             }
@@ -142,7 +140,7 @@ class PagesController extends Controller{
               if($entidad->count() > 0){
                 $idEntidad = $entidad->first()->id;
               }else{
-                $errors[] = 'Entidad no encontrada en la base de datos, fila: '. ($key + 1);
+                $errors[] = 'Entidad '.$importData[5].' no encontrada en la base de datos, fila: '. ($key + 1);
                 continue;
               }
             }
@@ -155,7 +153,7 @@ class PagesController extends Controller{
               if($organismo->count() > 0){
                 $idOrganismo = $organismo->first()->id;
               }else{
-                $errors[] = 'Organismo no se encuentra en la base de datos, fila: '. ($key + 1);
+                $errors[] = 'Organismo '.$importData[6].' no se encuentra en la base de datos, fila: '. ($key + 1);
                 continue;
               }
             }
@@ -168,7 +166,7 @@ class PagesController extends Controller{
               if($materia->count() > 0){
                 $idMateria = $materia->first()->id;
               }else{
-                $errors[] = 'Materia no encontrada en la base de datos, fila: '. ($key + 1);
+                $errors[] = 'Materia '.$importData[7].' no encontrada en la base de datos, fila: '. ($key + 1);
                 continue;
               }
             }
@@ -192,7 +190,7 @@ class PagesController extends Controller{
                 if($criterio->count() > 0){
                   $idCriterio = $criterio->first()->id;
                 }else{
-                  $errors[] = 'Tipo de criterio no encontrado en la base de datos, fila: '. ($key + 1);
+                  $errors[] = 'Tipo de criterio '.$importData[10].' no encontrado en la base de datos, fila: '. ($key + 1);
                   continue;
                 }
               }
@@ -205,7 +203,7 @@ class PagesController extends Controller{
                 if($epoca->count() > 0){
                   $idEpoca = $epoca->first()->id;
                 }else{
-                  $errors[] = 'Epoca no encontrada en la base de datos, fila: '. ($key + 1);
+                  $errors[] = 'Epoca '.$importData[11].' no encontrada en la base de datos, fila: '. ($key + 1);
                   continue;
                 }
               }
@@ -218,7 +216,7 @@ class PagesController extends Controller{
                 if($criterio_seccion->count() > 0){
                   $idCriterioSeccion = $criterio_seccion->first()->id;
                 }else{
-                  $errors[] = 'Tipo de criterio no encontrado en la base de datos, fila: '. ($key + 1);
+                  $errors[] = 'Tipo de criterio '.$importData[12].' no encontrado en la base de datos, fila: '. ($key + 1);
                   continue;
                 }
               }

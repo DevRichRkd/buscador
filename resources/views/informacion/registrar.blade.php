@@ -228,7 +228,7 @@
                                                 {{__('Solicitud')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="solicitud" id="solicitud" value="">
+                                                <textarea maxlength="1500" class="form-control" name="solicitud" id="solicitud"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -240,7 +240,7 @@
                                                 {{__('Respuesta')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="respuesta" id="respuesta" value="">
+                                                <textarea maxlength="1500" class="form-control" name="respuesta" id="respuesta"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -252,7 +252,7 @@
                                                 {{__('Agravio')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="agravio" id="agravio" value="">
+                                                <textarea maxlength="1500" class="form-control" name="agravio" id="agravio"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +264,7 @@
                                                 {{__('Relevancia de la Resolución')}}
                                             </label>
                                             <div class="col-sm-9">
-                                                <input type="text" maxlength="1500" class="form-control" name="relevancia" id="relevancia" value="">
+                                                <textarea  maxlength="1500" class="form-control" name="relevancia" id="relevancia"></textarea>
                                             </div>
                                         </div>
                                     </div>
