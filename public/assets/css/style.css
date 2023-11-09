@@ -34833,4 +34833,30 @@ label.error {
 .modal-body{
   text-align: left;
 }
+
+.menu-secciones, .menu-secciones a{
+  color: black;
+  font-weight: bold;
+}
+
+.classActive a{
+  color: #822f9b;
+}
+
+.classActive{
+  border-bottom: 1px solid #822f9b;
+}
+
+input#clave_de_control {
+  border-radius: 15px;
+  border: 1px solid grey;
+}
+
+.listFilters{
+  list-style-type: disclosure-closed;
+}
+
+.listFilters a{
+  color: #606060;
+}
 /*# sourceMappingURL=style.css.map */
