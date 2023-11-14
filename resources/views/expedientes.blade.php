@@ -212,24 +212,23 @@
                                 <div class="modal fade" id="Modal{{$valor->clave_de_control}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                       <div class="modal-content">
+                                        <a type="button" class="icon-close" data-dismiss="modal"><i class="mdi mdi-window-close"></i></a>
                                         <div class="modal-body">
                                             @if($idExpediente == 1)
-                                                <p>Año de emision : {{$valor->anio}}</p><br>
-                                                <p>Epoca : {{$valor->epoca}}</p><br>
-                                                <p>Materia : {{$valor->materia}}</p><br>
-                                                <p>Tipo de criterio : {{$valor->criterio_seccion}}</p><br>
-                                                <p>Resolucion o presedente: {{$valor->presedentes}}</p><br>
+                                                <p><span class="titles-modal">Año de emision</span><br>{{$valor->anio}}</p>
+                                                <p><span class="titles-modal">Epoca</span><br>{{$valor->epoca}}</p>
+                                                <p><span class="titles-modal">Materia</span><br> {{$valor->materia}}</p>
+                                                <p><span class="titles-modal">Tipo</span><br>{{$valor->criterio_seccion}}</p>
+                                                <p><span class="titles-modal">Resolucion o presedente</span><br>{{$valor->presedentes}}</p>
+                                                <p><span class="titles-modal">Tipo de criterio</span><br>{{$valor->criterio}}</p>
                                             @endif
                                             @if($idExpediente == 2)
-                                                <p>Año de emision : {{$valor->anio}}</p><br>
-                                                <p>Solicitud : {{$valor->solicitud}}</p><br>
-                                                <p>Respuesta : {{$valor->respuesta}}</p><br>
-                                                <p>Agravio: {{$valor->agravio}}</p><br>
-                                                <p>Relevancia: {{$valor->relevancia}}</p><br>     
+                                                <p><span class="titles-modal">Año de emision</span><br>{{$valor->anio}}</p><br>
+                                                <p><span class="titles-modal">Solicitud</span><br>{{$valor->solicitud}}</p><br>
+                                                <p><span class="titles-modal">Respuesta</span><br>{{$valor->respuesta}}</p><br>
+                                                <p><span class="titles-modal">Agravio</span><br>{{$valor->agravio}}</p><br>
+                                                <p><span class="titles-modal">Relevancia</span><br>{{$valor->relevancia}}</p><br>     
                                             @endif
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                                         </div>
                                       </div>
                                     </div>

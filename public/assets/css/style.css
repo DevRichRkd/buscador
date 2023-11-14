@@ -34864,7 +34864,7 @@ input#clave_de_control {
   font-size: 10px;
   padding: 4px;
   border-radius: 15px;
-  background-color: #7c19ff;
+  background-color: #822f9b;
   border: 0px;
 }
 
@@ -34889,12 +34889,30 @@ input#clave_de_control {
 }
 
 .box-title-color{
-  color: #ff008b !important;
+  color: #e1007b !important;
   font-weight: bold;
 }
 
 .box-icon-download{
   font-size: 35px;
-    color: #ff008b;
+    color: #e1007b;
+}
+
+.titles-modal{
+  color: #822f9b;
+  font-weight: bold;
+}
+
+.icon-close{
+  width: 30px;
+  right: 0;
+  position: absolute;
+  font-size: 22px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.icon-close::before{
+  content: "";
 }
 /*# sourceMappingURL=style.css.map */
