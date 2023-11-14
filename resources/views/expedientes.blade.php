@@ -95,8 +95,8 @@
                     <div class="col-md-4 {{$classActiveHistoricos}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/0/2">HISTORICO</a></div>
                     @endif
                     @if($idExpediente == 2)
-                    <div class="col-md-4 {{$classActiveAcceso}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/1/0">Acceso a la informacion</a></div>
-                    <div class="col-md-4 {{$classActiveProteccion}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/2/0">Proteccion de datos personales</a></div>
+                    <div class="col-md-4 {{$classActiveAcceso}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/1/0">ACCESO A LA<br>INFORMACION</a></div>
+                    <div class="col-md-4 {{$classActiveProteccion}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/2/0">PROTECCION DE<br>DATOS PERSONALES</a></div>
                     @endif
                 </div>
 
