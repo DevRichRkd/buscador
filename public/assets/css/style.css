@@ -34859,4 +34859,42 @@ input#clave_de_control {
 .listFilters a{
   color: #606060;
 }
+
+.btn-view-more, .btn-view-more:hover, .btn-view-more:focus{
+  font-size: 10px;
+  padding: 4px;
+  border-radius: 15px;
+  background-color: #7c19ff;
+  border: 0px;
+}
+
+.btn-view-more:focus{
+  box-shadow: 0 0 0 0.2rem #b800e6;
+}
+
+.btn-view-more:active{
+  background-color: #b800e6 !important;
+}
+
+.zebra-1{
+  background-color: #f1d4f9;
+}
+
+.zebra-2{
+  background-color: #fff;
+}
+
+.color-title{
+  color: #822f9b;
+}
+
+.box-title-color{
+  color: #ff008b !important;
+  font-weight: bold;
+}
+
+.box-icon-download{
+  font-size: 35px;
+    color: #ff008b;
+}
 /*# sourceMappingURL=style.css.map */

@@ -101,8 +101,17 @@
                 </div>
 
                 <div class="col-md-3 text-left pt-5">
+                    <!--Aqui se colocara el campo de clave de control-->
                     <div class="p-3">
-                        <p class=" h5 bold">Entidades</p>
+                        <p class=" h5 bold color-title">Clave de control</p>
+                        <input type="text" id="clave_de_control" name="clave_de_control" class="w-100">
+                        <input type="hidden" value="{{$idExpediente}}" id="idExpediente">
+                        <select id="display" class="form-select w-100" multiple style="display:none">
+                        </select>
+                    </div> 
+                    <!--Aqui se colocara el campo de clave de control-->
+                    <div class="p-3">
+                        <p class=" h5 bold color-title">Entidades</p>
                         <ul class="listFilters">
                             @if(count($totalEntidades) > 0)
                                 @foreach($totalEntidades as $entidad => $valor)
@@ -115,7 +124,7 @@
                    </div>
 
                    <div class="p-3">
-                        <p class=" h5 bold">Años</p>
+                        <p class=" h5 bold color-title">Años</p>
                         <ul class="listFilters">
                             @if(count($totalAnios) > 0)
                                 @foreach($totalAnios as $anios => $valor)
@@ -128,7 +137,7 @@
                     </div>
                     @if($idExpediente == 1)
                         <div class="p-3">
-                            <p class=" h5 bold">Tipo</p>
+                            <p class=" h5 bold color-title">Tipo</p>
                             <ul class="listFilters">
                                 @if(count($totalCriterios) > 0)
                                     @foreach($totalCriterios as $criterio => $valor)
@@ -140,18 +149,10 @@
                             </ul>
                         </div>
                     @endif
-                    <!--Aqui se colocara el campo de clave de control-->
-                    <div class="p-3">
-                        <p class=" h5 bold">Clave de control</p>
-                        <input type="text" id="clave_de_control" name="clave_de_control" class="w-100">
-                        <input type="hidden" value="{{$idExpediente}}" id="idExpediente">
-                        <select id="display" class="form-select w-100" multiple style="display:none">
-                        </select>
-                    </div> 
-                    <!--Aqui se colocara el campo de clave de control-->
+                    
                     @if($idExpediente == 1)
                         <div class="p-3">
-                            <p class=" h5 bold">Epoca</p>
+                            <p class=" h5 bold color-title">Epoca</p>
                             <ul class="listFilters">
                                 @if(count($totalEpocas) > 0)
                                     @foreach($totalEpocas as $epoca => $valor)
@@ -164,7 +165,7 @@
                         </div>
                     @endif
                     <div class="p-3">
-                        <p class=" h5 bold">Materia</p>
+                        <p class=" h5 bold color-title">Materia</p>
                         <ul class="listFilters">
                             @if(count($totalMaterias) > 0)
                                 @foreach($totalMaterias as $materia => $valor)
@@ -178,24 +179,33 @@
                </div>
                 <div class="col-md-9 pt-5">
                     <div class="row">
+                        <?php $cont = 0 ?>
                         @if(count($expedientes) >  0)
                             @foreach($expedientes as $expediente => $valor)
-                                <div class="col-md-12 text-left mt-3">
-                                    <div style="background-color: white; border-radius: 10px;" class="p-3 shadow d-flex">
+                            <?php 
+                                $cont++;
+                                if (($cont % 2) == 0) {
+                                    $classZebra = 'zebra-2';
+                                } else {
+                                    $classZebra = 'zebra-1';
+                                }
+                             ?>
+                                <div class="col-md-12 text-left mt-0 {{$classZebra}} pt-4 pb-3">
+                                    <div class="d-flex">
                                         <div class="col-md-10">
-                                            <span style="color:#0054DB" class="h6 bold">Rubro : {{$valor->rubro}}</span><br><br>
-                                            <p>Clave de control : {{$valor->clave_de_control}}</p><br>
-                                            <p>Entidad : {{$valor->entidad}}</p><br>
-                                            <p>Oganismo : {{$valor->organismo}}</p><br>
-                                            <p style="color:#0054DB">Palabras clave : {{$valor->palabras_clave}}</p>
-                                            <p>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$valor->clave_de_control}}">
+                                            <span class="h6 bold box-title-color">{{$valor->rubro}}</span><br>
+                                            <p>Clave de control : {{$valor->clave_de_control}}</p>
+                                            <p>Entidad : {{$valor->entidad}}</p>
+                                            <p>Oganismo : {{$valor->organismo}}</p>
+                                            <p>Palabras clave : {{$valor->palabras_clave}}</p>
+                                            <p class="text-right">
+                                                <button type="button" class="btn btn-primary btn-view-more" data-toggle="modal" data-target="#Modal{{$valor->clave_de_control}}">
                                                 Ver mas
                                                 </button>
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <a href="{{$valor->vinculo}}" class="float-right p-3" target="_blank"><span style="color:#0054DB" class="text-right pl-5">Descargar</span></a>
+                                            <a href="{{$valor->vinculo}}" class="float-right p-3" target="_blank"><i class="mdi mdi-package-down box-icon-download"></i></a>
                                         </div>
                                     </div>
                                 </div>
