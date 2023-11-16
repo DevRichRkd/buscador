@@ -234,7 +234,7 @@
                                     </div>
                                   </div>
                             @endforeach
-                            <div class="col-md-12  float-right">
+                            <div class="col-md-12 float-right mt-5">
                                 <div class="float-right bbb">
                                    @if($request != 0)
                                         {{$expedientes->appends(['search' => $request ])->links()}}

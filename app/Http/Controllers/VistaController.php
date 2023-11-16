@@ -70,7 +70,7 @@ class Vistacontroller extends Controller{
                         'criterios_secciones.id')
                     ->where('id_expediente',$id)
                     ->orderBy('informacion.id', 'Desc')
-                    ->paginate(10);
+                    ->paginate(5);
 
         $idEntidad = 0;
         $idAnio  = 0;
@@ -188,7 +188,7 @@ class Vistacontroller extends Controller{
                     })
                     ->where('informacion.id_expediente',$expediente)
                                 ->orderBy('informacion.id', 'Desc')
-                                ->paginate(10);
+                                ->paginate(5);
 
         
 
@@ -405,7 +405,7 @@ class Vistacontroller extends Controller{
                         return $query->where('informacion.id', $idInfo);
                     })
                     ->orderBy('informacion.id', 'Desc')
-                    ->paginate(25);
+                    ->paginate(5);
         
         $idEntidad = 0;
         $idAnio  = 0;
