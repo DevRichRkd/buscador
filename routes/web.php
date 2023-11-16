@@ -23,19 +23,19 @@ if (!empty($proxy_schema)) {
 }*/
 
 //Muestra la vista web principal
-Route::get('/','VistaController@index');
+//Route::get('/','VistaController@index');
 //Muestra la vista de búsqueda avanzada
-Route::get('/busqueda-avanzada','VistaController@busqueda');
+//Route::get('/busqueda-avanzada','VistaController@busqueda');
 // metodo que realiza la búsqueda avanzada
-Route::get('/buscar','VistaController@buscar');
+//Route::get('/buscar','VistaController@buscar');
 //Muestra los resultados por nivel
-Route::get('/nivel/{id}','VistaController@show');
+//Route::get('/nivel/{id}','VistaController@show');
 //realiza la búsqueda general
-Route::get('/busqueda-general','VistaController@general');
+//Route::get('/busqueda-general','VistaController@general');
 
-Route::get('/filtros/{buscar}/{nivel}/{ejercicio}/{tema}/{pais}/{pertencia}/{procedencia}/{clave}/{autor}/{titulo}','VistaController@filtros');
+//Route::get('/filtros/{buscar}/{nivel}/{ejercicio}/{tema}/{pais}/{pertencia}/{procedencia}/{clave}/{autor}/{titulo}','VistaController@filtros');
  
-Route::get('/resultados','VistaController@resultados');
+//Route::get('/resultados','VistaController@resultados');
 
 
 

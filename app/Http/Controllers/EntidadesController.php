@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Lang;
 use Auth;
-use Storage;
 use App\Entidades;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

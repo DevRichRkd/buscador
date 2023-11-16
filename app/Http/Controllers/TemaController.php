@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Lang;
 use Auth;
 use App\Tema;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
