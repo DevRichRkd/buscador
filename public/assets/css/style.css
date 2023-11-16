@@ -32231,8 +32231,8 @@ input[type=range]:focus {
 }
 .page-item.active .page-link {
   color: #ffffff;
-  background-color: #0080ff;
-  border-color: #0080ff;
+  background-color: #822f9b;
+  border-color: #822f9b;
 }
 .page-item.disabled .page-link {
   color: #8A98AC;
@@ -34914,5 +34914,10 @@ input#clave_de_control {
 
 .icon-close::before{
   content: "";
+}
+
+.page-item.active .page-link {
+    background-color: #822f9b;
+    border-color: #822f9b;
 }
 /*# sourceMappingURL=style.css.map */
