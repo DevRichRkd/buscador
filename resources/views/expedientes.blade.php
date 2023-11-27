@@ -204,8 +204,10 @@
                                                 </button>
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
-                                            <a href="{{$valor->vinculo}}" class="float-right p-3" target="_blank"><i class="mdi mdi-package-down box-icon-download"></i></a>
+                                        <div class="col-md-1 offset-md-1 center-middle">
+                                            <a href="{{$valor->vinculo}}" class="float-right p-3" target="_blank">  
+                                                <img src="{{asset('assets/images/Icon-awesome-file-download.png')}}" alt="">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -214,12 +216,24 @@
                                       <div class="modal-content">
                                         <a type="button" class="icon-close" data-dismiss="modal"><i class="mdi mdi-window-close"></i></a>
                                         <div class="modal-body">
+                                            <?php
+                                                $stringPrecedentes = $valor->presedentes;
+                                                $separator = "|";
+                                                $stringList = explode($separator, $stringPrecedentes);
+                                                ?>
                                             @if($idExpediente == 1)
                                                 <p><span class="titles-modal">Año de emision</span><br>{{$valor->anio}}</p>
                                                 <p><span class="titles-modal">Epoca</span><br>{{$valor->epoca}}</p>
                                                 <p><span class="titles-modal">Materia</span><br> {{$valor->materia}}</p>
                                                 <p><span class="titles-modal">Tipo</span><br>{{$valor->criterio_seccion}}</p>
-                                                <p><span class="titles-modal">Resolucion o presedente</span><br>{{$valor->presedentes}}</p>
+                                                <p><span class="titles-modal">Resolucion o presedente</span><br>
+                                                <?php
+                                                   foreach($stringList as $key => $value){
+                                                        echo $value;
+                                                        echo"<br>";
+                                                    }
+                                                ?>
+                                                </p>
                                                 <p><span class="titles-modal">Tipo de criterio</span><br>{{$valor->criterio}}</p>
                                             @endif
                                             @if($idExpediente == 2)

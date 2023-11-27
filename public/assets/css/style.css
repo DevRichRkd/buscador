@@ -34861,8 +34861,9 @@ input#clave_de_control {
 }
 
 .btn-view-more, .btn-view-more:hover, .btn-view-more:focus{
-  font-size: 10px;
-  padding: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px;
   border-radius: 15px;
   background-color: #822f9b;
   border: 0px;
@@ -34919,5 +34920,10 @@ input#clave_de_control {
 .page-item.active .page-link {
     background-color: #822f9b;
     border-color: #822f9b;
+}
+
+.center-middle {
+  display: flex;
+  align-items: center;
 }
 /*# sourceMappingURL=style.css.map */
