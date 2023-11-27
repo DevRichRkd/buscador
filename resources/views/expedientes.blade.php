@@ -89,7 +89,7 @@
                     }
                 ?>
                 <div class="col-md-9 offset-md-3 d-flex menu-secciones" >
-                    <div class="col-md-4 {{$classActiveAll}}"><a href="{{ url('expedientes')}}/{{$idExpediente}}/">TODO</a></div>
+                    <div class="col-md-4 txt-bottom {{$classActiveAll}}"><a href="{{ url('expedientes')}}/{{$idExpediente}}/">TODO</a></div>
                     @if($idExpediente == 1)
                     <div class="col-md-4 {{$classActiveVigentes}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/0/1">VIGENTE</a></div>
                     <div class="col-md-4 {{$classActiveHistoricos}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/0/2">HISTORICO</a></div>
@@ -102,7 +102,7 @@
 
                 <div class="col-md-3 text-left pt-5">
                     <!--Aqui se colocara el campo de clave de control-->
-                    <div class="p-3">
+                    <div class="p-3 border-r">
                         <p class=" h5 bold color-title">Clave de control</p>
                         <input type="text" id="clave_de_control" name="clave_de_control" class="w-100">
                         <input type="hidden" value="{{$idExpediente}}" id="idExpediente">
@@ -110,9 +110,9 @@
                         </select>
                     </div> 
                     <!--Aqui se colocara el campo de clave de control-->
-                    <div class="p-3">
+                    <div class="p-3 border-r">
                         <p class=" h5 bold color-title">Entidades</p>
-                        <ul class="listFilters">
+                        <ul class="listFilters list-entidades">
                             @if(count($totalEntidades) > 0)
                                 @foreach($totalEntidades as $entidad => $valor)
                                     <li><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/{{$valor->id}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$idMateria}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</li></a>
@@ -123,7 +123,7 @@
                         </ul>
                    </div>
 
-                   <div class="p-3">
+                   <div class="p-3 border-r">
                         <p class=" h5 bold color-title">Años</p>
                         <ul class="listFilters">
                             @if(count($totalAnios) > 0)
@@ -136,7 +136,7 @@
                         </ul>
                     </div>
                     @if($idExpediente == 1)
-                        <div class="p-3">
+                        <div class="p-3 border-r">
                             <p class=" h5 bold color-title">Tipo</p>
                             <ul class="listFilters">
                                 @if(count($totalCriterios) > 0)
@@ -151,7 +151,7 @@
                     @endif
                     
                     @if($idExpediente == 1)
-                        <div class="p-3">
+                        <div class="p-3 border-r">
                             <p class=" h5 bold color-title">Epoca</p>
                             <ul class="listFilters">
                                 @if(count($totalEpocas) > 0)
@@ -163,19 +163,19 @@
                                 @endif
                             </ul>
                         </div>
+                        <div class="p-3 border-r">
+                            <p class=" h5 bold color-title">Materia</p>
+                            <ul class="listFilters">
+                                @if(count($totalMaterias) > 0)
+                                    @foreach($totalMaterias as $materia => $valor)
+                                        <li><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$valor->id}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</li></a>
+                                    @endforeach
+                                @else
+                                    <li>Sin resultados</li>
+                                @endif
+                            </ul>
+                        </div>
                     @endif
-                    <div class="p-3">
-                        <p class=" h5 bold color-title">Materia</p>
-                        <ul class="listFilters">
-                            @if(count($totalMaterias) > 0)
-                                @foreach($totalMaterias as $materia => $valor)
-                                    <li><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/{{$idEntidad}}/{{$idAnio}}/{{$idTipo}}/{{$idEpoca}}/{{$valor->id}}/{{$idSeccion}}">{{$valor->nombre}} ({{$valor->total}})</li></a>
-                                @endforeach
-                            @else
-                                <li>Sin resultados</li>
-                            @endif
-                        </ul>
-                    </div>
                </div>
                 <div class="col-md-9 pt-5">
                     <div class="row">
@@ -193,7 +193,7 @@
                                 <div class="col-md-12 text-left mt-0 {{$classZebra}} pt-4 pb-3">
                                     <div class="d-flex">
                                         <div class="col-md-10">
-                                            <span class="h6 bold box-title-color">{{$valor->rubro}}</span><br>
+                                            <span class="h6 bold box-title-color">{{$valor->rubro}}</span><br><br>
                                             <p>Clave de control : {{$valor->clave_de_control}}</p>
                                             <p>Entidad : {{$valor->entidad}}</p>
                                             <p>Oganismo : {{$valor->organismo}}</p>
@@ -221,6 +221,11 @@
                                                 $separator = "|";
                                                 $stringList = explode($separator, $stringPrecedentes);
                                                 ?>
+                                                <span class="h6 bold box-title-color">{{$valor->rubro}}</span><br><br>
+                                                <p><span class="titles-modal">Clave de control</span><br>{{$valor->clave_de_control}}</p>
+                                                <p><span class="titles-modal">Entidad</span><br>{{$valor->entidad}}</p>
+                                                <p><span class="titles-modal">Oganismo</span><br>{{$valor->organismo}}</p>
+                                                <p><span class="titles-modal">Palabras clave</span><br>{{$valor->palabras_clave}}</p>
                                             @if($idExpediente == 1)
                                                 <p><span class="titles-modal">Año de emision</span><br>{{$valor->anio}}</p>
                                                 <p><span class="titles-modal">Epoca</span><br>{{$valor->epoca}}</p>
@@ -237,11 +242,11 @@
                                                 <p><span class="titles-modal">Tipo de criterio</span><br>{{$valor->criterio}}</p>
                                             @endif
                                             @if($idExpediente == 2)
-                                                <p><span class="titles-modal">Año de emision</span><br>{{$valor->anio}}</p><br>
-                                                <p><span class="titles-modal">Solicitud</span><br>{{$valor->solicitud}}</p><br>
-                                                <p><span class="titles-modal">Respuesta</span><br>{{$valor->respuesta}}</p><br>
-                                                <p><span class="titles-modal">Agravio</span><br>{{$valor->agravio}}</p><br>
-                                                <p><span class="titles-modal">Relevancia</span><br>{{$valor->relevancia}}</p><br>     
+                                                <p><span class="titles-modal">Año de emision</span><br>{{$valor->anio}}</p>
+                                                <p><span class="titles-modal">Solicitud</span><br>{{$valor->solicitud}}</p>
+                                                <p><span class="titles-modal">Respuesta</span><br>{{$valor->respuesta}}</p>
+                                                <p><span class="titles-modal">Agravio</span><br>{{$valor->agravio}}</p>
+                                                <p><span class="titles-modal">Relevancia</span><br>{{$valor->relevancia}}</p>
                                             @endif
                                         </div>
                                       </div>

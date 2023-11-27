@@ -34856,6 +34856,12 @@ input#clave_de_control {
   list-style-type: disclosure-closed;
 }
 
+.list-entidades{
+  max-height: 117px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 .listFilters a{
   color: #606060;
 }
@@ -34878,7 +34884,7 @@ input#clave_de_control {
 }
 
 .zebra-1{
-  background-color: #f1d4f9;
+  background-color: #F3EBFE;
 }
 
 .zebra-2{
@@ -34925,5 +34931,39 @@ input#clave_de_control {
 .center-middle {
   display: flex;
   align-items: center;
+}
+
+.txt-bottom{
+  align-self: flex-end;
+}
+
+.border-r{
+  border-right: 1px solid #ddd;
+}
+
+.list-entidades::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.list-entidades::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+.list-entidades::-webkit-scrollbar-button:increment,.list-entidades::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.list-entidades::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.list-entidades::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.list-entidades::-webkit-scrollbar-track {
+  border-radius: 10px;  
 }
 /*# sourceMappingURL=style.css.map */
