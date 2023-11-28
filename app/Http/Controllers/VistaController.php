@@ -341,6 +341,25 @@ class Vistacontroller extends Controller{
 
     }
 
+    public function getExpedientesByPalabraClave($clave, $id)
+    {
+        # Validamos que el usuario logueado este activo. En caso el usuario no este activo se manda al home
+        if (!Auth::guest()){
+            if(Auth::user()->estatus != 1){
+                return redirect('/home');
+            }
+        }
+        # Fin de validación usuario activo
+        $expedientes = Informacion::where('palabras_clave','like','%' .$clave.'%')
+        ->when($id, function ($query, $id){
+            return $query->where('id_expediente', $id);
+        })
+        ->get();
+       
+        return $expedientes;
+
+    }
+
     public function getExpedienteById($id, $idInfo){
 
        /* $expedientes = Informacion::where('id_expediente',$id)

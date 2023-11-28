@@ -34847,7 +34847,7 @@ label.error {
   border-bottom: 1px solid #822f9b;
 }
 
-input#clave_de_control {
+input#clave_de_control, input#palabra_clave {
   border-radius: 15px;
   border: 1px solid grey;
 }
@@ -34965,5 +34965,9 @@ input#clave_de_control {
 
 .list-entidades::-webkit-scrollbar-track {
   border-radius: 10px;  
+}
+
+.z-1{
+  z-index: 1 !important;
 }
 /*# sourceMappingURL=style.css.map */

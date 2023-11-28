@@ -87,6 +87,7 @@ Route::resource('/informacion','InformacionController');
 
 Route::get('/organismosByentidad/{id}','OrganismosController@getOrganismosByIdEntidad');
 Route::get('/expedientesByClave/{clave}/{id}','VistaController@getExpedientesByClave');
+Route::get('/expedientesByPalabraClave/{clave}/{id}','VistaController@getExpedientesByPalabraClave');
 Route::get('/expediente/{id}/{clave}','VistaController@getExpedienteById');
 
 Route::resource('/loadcsv', 'PagesController');

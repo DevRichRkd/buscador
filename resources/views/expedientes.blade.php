@@ -100,8 +100,17 @@
                     @endif
                 </div>
 
-                <div class="col-md-3 text-left pt-5">
-                    <!--Aqui se colocara el campo de clave de control-->
+                <div class="col-md-3 text-left pt-5 z-1">
+                    <!--Campo busqueda por palabra clave-->
+                    <div class="p-3 border-r">
+                        <p class=" h5 bold color-title">Palabras clave</p>
+                        <input type="text" id="palabra_clave" name="palabra_clave" class="w-100">
+                        <input type="hidden" value="{{$idExpediente}}" id="idExpediente">
+                        <select id="display_pc" class="form-select " multiple style="display:none">
+                        </select>
+                    </div> 
+                    <!---Campo busqueda por palabra clave-->
+                    <!--Campo busqueda por de clave de control-->
                     <div class="p-3 border-r">
                         <p class=" h5 bold color-title">Clave de control</p>
                         <input type="text" id="clave_de_control" name="clave_de_control" class="w-100">
@@ -109,7 +118,7 @@
                         <select id="display" class="form-select w-100" multiple style="display:none">
                         </select>
                     </div> 
-                    <!--Aqui se colocara el campo de clave de control-->
+                    <!---Campo busqueda por de clave de control-->
                     <div class="p-3 border-r">
                         <p class=" h5 bold color-title">Entidades</p>
                         <ul class="listFilters list-entidades">
@@ -322,6 +331,31 @@
                             }
                                 for(i = 0; i < data.length; i++){
                                     $('#display').append('<option value="'+ data[i].id +'">'+ data[i].clave_de_control +'</option>');
+                                }
+                        });
+                }
+            });
+
+            $("#palabra_clave").keyup(function() {
+                var clave = $('#palabra_clave').val();
+                if(clave == ''){
+                    $('#display_pc').hide();
+                }else{
+                    $.get('/expedientesByPalabraClave/'+clave+'/'+idExpediente, function(data){
+                            $('#display_pc').empty();
+                            if(data.length > 0){
+                                $('#display_pc').show();
+                            }else{
+                                $('#display_pc').hide();
+                            }
+                                for(i = 0; i < data.length; i++){
+                                    var keywords =  data[i].palabras_clave;
+                                    keywords = keywords.split('|');
+                                    var words = '';
+                                    keywords.forEach( function(valor, indice, array) {
+                                        words += valor+', '
+                                    });
+                                    $('#display_pc').append('<option value="'+ data[i].id +'">'+ words.substring(0, words.length - 2) +'</option>');
                                 }
                         });
                 }
