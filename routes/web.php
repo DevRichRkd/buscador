@@ -40,7 +40,7 @@ if (!empty($proxy_schema)) {
 
 
 //Muestra todos los Expedientes por ID
-Route::get('/expedientes/{id}','VistaController@getTipoExpedienteById');
+Route::get('/expediente/{id}','VistaController@getTipoExpedienteById');
 
 Route::get('/filters/{buscar}/{expediente}/{entidad}/{anio}/{tipo}/{epoca}/{materia}/{seccion}','VistaController@filters');
 

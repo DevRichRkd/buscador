@@ -54,7 +54,7 @@
                     $classActiveAcceso = "";
                     $classActiveProteccion = "";
                     $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-                    if ((false !== strpos($url,'/expedientes/1')) or (false !== strpos($url,'/expedientes/2'))) {
+                    if ((false !== strpos($url,'/expediente/1')) or (false !== strpos($url,'/expediente/2'))) {
                             $classActiveAll = "classActive";
                     } else {
                         if (false !== strpos($url,'filters/0/1')) {
@@ -89,7 +89,7 @@
                     }
                 ?>
                 <div class="col-md-9 offset-md-3 d-flex menu-secciones" >
-                    <div class="col-md-4 txt-bottom {{$classActiveAll}}"><a href="{{ url('expedientes')}}/{{$idExpediente}}/">TODO</a></div>
+                    <div class="col-md-4 txt-bottom {{$classActiveAll}}"><a href="{{ url('expediente')}}/{{$idExpediente}}/">TODO</a></div>
                     @if($idExpediente == 1)
                     <div class="col-md-4 {{$classActiveVigentes}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/0/1">VIGENTE</a></div>
                     <div class="col-md-4 {{$classActiveHistoricos}}"><a href="{{url('filters')}}/{{$request}}/{{$idExpediente}}/0/0/0/0/0/2">HISTORICO</a></div>
